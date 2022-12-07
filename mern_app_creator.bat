@@ -87,7 +87,7 @@ mkdir basicController
 cd basicController
 
 (
-echo const BasicModel = require("../../models/basic.model")
+echo const BasicModel = require("../../models/basic.model"^)
 echo.
 echo const post = async (req, res^) =^> {
 echo    return res.json({ basicResponse: "testing get response" }^)
@@ -109,15 +109,19 @@ echo module.exports = { post, get, put, del }
 ) > "basicController.js"
 
 (
-echo const basicController = require("./basicController"^)
+echo const { post, get, put, del } = require("./basicController"^)
 echo.
-echo module.exports = { basicController }
+echo module.exports = { post, get, put, del }
 ) > "index.js"
 
 cd ../../db
 
 (
 echo const mongoose = require("mongoose"^)
+echo.
+echo // DeprecationWarning: Mongoose: the `strictQuery` 
+echo // option will be switched back to `false` by default in Mongoose 7
+echo mongoose.set("strictQuery", false^) // Linea para prepararse para este cambio
 echo.
 echo // Credenciales de base de datos
 echo const dbname = ""
@@ -167,8 +171,8 @@ cd ../..
 
 (
 echo @echo off
-echo cmd /K "cd %APP_NAME%-react-app && npm start"
-echo cmd /K "cd %APP_NAME%-express-server && npm run dev"
+echo call start cmd.exe /K "cd %APP_NAME%-react-app && npm start"
+echo call start cmd.exe /K "cd %APP_NAME%-express-server && npm run dev"
 echo echo Ejecutando proyecto %APP_NAME%
 ) > "run_mern_project.bat"
 

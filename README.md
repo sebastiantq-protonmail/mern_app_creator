@@ -65,7 +65,7 @@ The script will be executed and at the finish there will be two folders, the one
 
 Inside the Express server folder will be created an API which allows to connect to a Mongo database. The API structure inside the 'app-name_express_server' folder is:
 ```
-├── nombre-app_express_server
+├── app-name_express_server
 │   ├── controllers
 │   │   └── basicController
 │   │   │   └── basicController.js
